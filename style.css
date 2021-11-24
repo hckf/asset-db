@@ -1,0 +1,149 @@
+body {
+  background-color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+  /* Center the form on the page */
+  margin: 0 auto;
+  width: 37.5rem;
+  /* Form outline */
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  display: flex;
+}
+
+/* input:not(:placeholder-shown):invalid {
+  border: 1px dashed red;
+}
+
+input:not(:placeholder-shown):valid {
+  border: 1px solid greenyellow;
+} */
+
+::placeholder {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input:disabled::placeholder {
+  color: transparent;
+}
+
+input[type="text"][disabled] {
+  background-color: lightgrey;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1rem;
+}
+
+input,
+textarea {
+  /* To make sure that all text fields have the same font settings
+       By default, textareas have a monospace font */
+  font: 0.9rem sans-serif;
+
+  /* Uniform text field size */
+  width: 18rem;
+  box-sizing: border-box;
+
+  /* Match form field borders */
+  border: 1px solid #999;
+}
+
+input:focus,
+textarea:focus {
+  /* Additional highlight for focused elements */
+  border-color: #000;
+}
+
+label {
+  /* Uniform size & alignment */
+  display: inline-block;
+  width: 7rem;
+  text-align: right;
+}
+
+textarea {
+  /* Align multiline text fields with their labels */
+  vertical-align: top;
+
+  /* Provide space to type some text */
+  height: 5rem;
+}
+
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+.form-body {
+  margin: 0 0 0 5rem;
+  position: relative;
+  width: 100%;
+}
+
+.form-buttons {
+  background-color: RGB(36, 160, 237);
+  border: 1px solid whitesmoke;
+  border-radius: 50px;
+  box-sizing: border-box;
+  color: whitesmoke;
+  margin-left: 8.25rem;
+  padding: 0.5rem;
+  width: 18.75rem;
+}
+
+.form-contents {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+  width: 100%;
+}
+
+.page-form {
+  align-items: center;
+  background-color: whitesmoke;
+  /* height: 95vh; */
+  margin: 0 auto;
+}
+
+ul > .text-valid {
+  color: transparent;
+  font-size: 0.7rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.text-input {
+  border-radius: 50px;
+  margin-left: 1em;
+  padding: 0.5em;
+  width: 18.75rem;
+}
+
+.text-valid {
+  margin-left: 12em;
+}
+
+#notes {
+  border-radius: 10px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Asset Database</title>
+  </head>
+  <body>
+    <form
+      name="assetform"
+      action=""
+      method="post"
+      id="asset-form"
+      class="page-form"
+    >
+      <div class="form-contents" id="form-contents">
+        <div class="form-header" id="form-header">
+          <h1 class="header-text" id="form-heading">Asset Form</h1>
+          <p class="header-text" id="form-subheading">
+            Please use alphanumeric characters, whitespace and . ' - _ / only.
+          </p>
+        </div>
+        <ul id="form-fields" class="form-body">
+          <li>
+            <label for="device-name">Device Name</label>
+            <input
+              type="text"
+              id="device-name"
+              class="text-input"
+              maxlength="100"
+              minlength="1"
+              name="device-name"
+              placeholder="Enter the name of the device"
+              oninvalid="setCustomValidity('')"
+              required
+            />
+          </li>
+          <div id="name-valid" class="text-valid">
+            Device name errors will appear here.
+          </div>
+          <li>
+            <label for="device-version">Device Version</label>
+            <input
+              type="text"
+              id="device-version"
+              class="text-input"
+              maxlength="100"
+              minlength="1"
+              name="device-version"
+              placeholder="Enter the device version"
+              oninvalid="setCustomValidity('')"
+              required
+            />
+          </li>
+          <div id="version-valid" class="text-valid">
+            Device version errors will appear here.
+          </div>
+          <li>
+            <label for="serial-number">Serial Number</label>
+            <input
+              type="text"
+              id="serial-number"
+              class="text-input"
+              maxlength="100"
+              minlength="1"
+              name="serial-number"
+              oninput="let
+            p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p,
+            p);"
+              oninvalid="setCustomValidity('')"
+              placeholder="Enter the device serial number"
+              required
+            />
+          </li>
+          <div id="serial-valid" class="text-valid">
+            Serial number errors will appear here.
+          </div>
+          <li>
+            <label for="device-status">Device Status</label>
+            <select
+              id="device-status"
+              class="text-input"
+              name="device-status"
+              onchange="statusUpdate()"
+              oninvalid="setCustomValidity('')"
+              required
+            >
+              <option selected hidden></option>
+              <option value="option-storage">In Storage</option>
+              <option value="option-issued">Issued</option>
+              <option value="option-return">Due Return</option>
+              <option value="option-damaged">Damaged</option>
+              <option value="option-lost">Lost</option>
+            </select>
+          </li>
+          <div id="status-valid" class="text-valid">
+            Device status errors will appear here.
+          </div>
+          <li>
+            <label for="location">Location</label>
+            <input
+              disabled="true"
+              type="text"
+              id="location"
+              class="text-input"
+              maxlength="100"
+              minlength="1"
+              name="location"
+              oninvalid="setCustomValidity('')"
+              placeholder="Where is the device?"
+              required
+            />
+          </li>
+          <div id="location-valid" class="text-valid">
+            Device location errors will appear here.
+          </div>
+          <li>
+            <label for="user-issued">User Issued</label>
+            <input
+              disabled="true"
+              type="text"
+              id="user-issued"
+              class="text-input"
+              maxlength="100"
+              minlength="1"
+              name="user-issued"
+              oninvalid="setCustomValidity('')"
+              placeholder="Who has the device?"
+              required
+            />
+          </li>
+          <div id="issued-valid" class="text-valid">
+            User issuing errors will appear here.
+          </div>
+          <li>
+            <label for="notes">Notes</label>
+            <textarea
+              id="notes"
+              class="text-input"
+              name="notes"
+              oninvalid="setCustomValidity('')"
+              pattern="^[a-zA-Z][a-zA-Z0-9.\s'-,]+"
+              placeholder="Additional information here (optional)"
+            ></textarea>
+          </li>
+          <div id="notes-valid" class="text-valid">
+            Notes errors will appear here.
+          </div>
+          <li class="button">
+            <button type="submit" id="submit-button" class="form-buttons">
+              Submit
+            </button>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </body>
+</html>
