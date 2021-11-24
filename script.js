@@ -12,17 +12,22 @@ function fieldFormat(inputId, errorStr = "no-error") {
 
   let inputField = document.getElementById(inputId);
   let validField = document.getElementById(fieldValidationPairs[inputId]);
-  if (errorStr == "no-error") {
-    inputField.style.border = "1px solid lightgreen";
-    validField.style.color = "transparent";
-    validField.innerText = "Valid input.";
+  if (inputId == "notes") {
   } else {
-    inputField.style.border = "1px dashed red";
-    validField.style.color = "red";
-    if (errorStr == "empty") {
-      validField.innerText = "Please ensure fields are completed.";
-    } else if (errorStr == "regex-failed") {
-      validField.innerText = "Alphanumeric characters and . ' - _ / only.";
+    if (errorStr == "no-error") {
+      inputField.style.border = "1px solid lightgreen";
+      validField.style.color = "transparent";
+      validField.innerText = "Valid input.";
+    } else {
+      inputField.style.border = "1px dashed red";
+      validField.style.color = "red";
+      if (errorStr == "empty") {
+        validField.innerText = "Please ensure fields are completed.";
+      } else if (errorStr == "no-letters") {
+        validField.innerText = "Alphabetic characters are required (A-Z)";
+      } else if (errorStr == "regex-failed") {
+        validField.innerText = "Alphanumeric characters and . ' - _ / only.";
+      }
     }
   }
 }
@@ -31,13 +36,20 @@ function fieldValidation(className) {
   let fields = Array.from(document.getElementsByClassName(className));
   for (const field of fields) {
     field.addEventListener("blur", (e) => {
-      let regex = /^[a-zA-Z]+[a-zA-Z0-9/\s.'-_\/]*$/g;
+      let regex = /[a-z]+[a-z0-9/\s.\'-_\/]*$/gi;
+      let regAlpha = /[a-z]/gi;
+      let regOtherChar = /[/\s.'-_\/]/;
       field.value = field.value.trim();
       switch (field.id) {
         case "serial-number":
-          regex = /^[a-zA-Z0-9]+[a-zA-Z0-9/\s.'-_\/]*$/g;
+          regex = /[a-z0-9]+[a-z0-9/\s.\'-_\/]*$/gi;
           if (!field.value) {
             fieldFormat(field.id, "empty");
+          } else if (
+            !regAlpha.test(field.value) &&
+            regOtherChar.test(field.value)
+          ) {
+            fieldFormat(field.id, "no-letters");
           } else if (!regex.test(field.value)) {
             fieldFormat(field.id, "regex-failed");
           } else {
@@ -47,14 +59,24 @@ function fieldValidation(className) {
         case "device-status":
           if (!field.value) {
             fieldFormat(field.id, "empty");
+          } else if (
+            !regAlpha.test(field.value) &&
+            regOtherChar.test(field.value)
+          ) {
+            fieldFormat(field.id, "no-letters");
           } else {
             fieldFormat(field.id);
           }
           break;
         case "notes":
-          regex = /^[a-zA-Z]+[a-zA-Z0-9/\s.'-_\/]*$/g;
+          regex = /[a-z]+[a-z0-9/\s.\'-_\/]*$/gi;
           if (regex.test(field.value) || field.value == "") {
             fieldFormat(field.id);
+          } else if (
+            !regAlpha.test(field.value) &&
+            regOtherChar.test(field.value)
+          ) {
+            fieldFormat(field.id, "no-letters");
           } else {
             fieldFormat(field.id, "regex-failed");
           }
@@ -62,6 +84,11 @@ function fieldValidation(className) {
         default:
           if (!field.value) {
             fieldFormat(field.id, "empty");
+          } else if (
+            !regAlpha.test(field.value) &&
+            regOtherChar.test(field.value)
+          ) {
+            fieldFormat(field.id, "no-letters");
           } else if (!regex.test(field.value)) {
             fieldFormat(field.id, "regex-failed");
           } else {
