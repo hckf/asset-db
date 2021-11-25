@@ -218,7 +218,6 @@ function submitForm() {
     }
     let submitValid = document.getElementById("submit-valid");
     if (fieldsValid) {
-      // alert("Submission accepted!");
       let http = new XMLHttpRequest();
       let url = "database.php";
       let parameters = "";
@@ -246,7 +245,6 @@ function submitForm() {
         "application/x-www-form-urlencoded"
       );
 
-      alert(submitValid.innerText);
       http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
           if (http.responseText == 1) {
