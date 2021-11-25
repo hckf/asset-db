@@ -25,6 +25,9 @@
             <span class="highlight">. ' - _ /</span>
             only.
           </p>
+          <p class="header-text text-valid" id="submit-valid">
+            Validation text goes here.
+          </p>
         </div>
         <ul id="form-fields" class="form-body">
           <li>
@@ -37,7 +40,6 @@
               minlength="1"
               name="device-name"
               placeholder="Enter the name of the device"
-              oninvalid="setCustomValidity('')"
               required
             />
           </li>
@@ -54,7 +56,6 @@
               minlength="1"
               name="device-version"
               placeholder="Enter the device version"
-              oninvalid="setCustomValidity('')"
               required
             />
           </li>
@@ -70,10 +71,6 @@
               maxlength="100"
               minlength="1"
               name="serial-number"
-              oninput="let
-            p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p,
-            p);"
-              oninvalid="setCustomValidity('')"
               placeholder="Enter the device serial number"
               required
             />
@@ -87,8 +84,6 @@
               id="device-status"
               class="text-input"
               name="device-status"
-              onchange="statusUpdate()"
-              oninvalid="setCustomValidity('')"
               required
             >
               <option selected hidden></option>
@@ -112,7 +107,6 @@
               maxlength="100"
               minlength="1"
               name="location"
-              oninvalid="setCustomValidity('')"
               placeholder="Where is the device?"
               required
             />
@@ -130,7 +124,6 @@
               maxlength="100"
               minlength="1"
               name="user-issued"
-              oninvalid="setCustomValidity('')"
               placeholder="Who has the device?"
               required
             />
@@ -144,8 +137,6 @@
               id="notes"
               class="text-input"
               name="notes"
-              oninvalid="setCustomValidity('')"
-              pattern="^[a-zA-Z][a-zA-Z0-9.\s'-,]+"
               placeholder="Additional information here (optional)"
             ></textarea>
           </li>

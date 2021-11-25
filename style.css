@@ -13,17 +13,10 @@ form {
   display: flex;
 }
 
-/* input:not(:placeholder-shown):invalid {
-  border: 1px dashed red;
-}
-
-input:not(:placeholder-shown):valid {
-  border: 1px solid greenyellow;
-} */
-
 ::placeholder {
   font-size: 12px;
   font-style: italic;
+  text-transform: none;
 }
 
 input:focus::placeholder {
@@ -122,12 +115,6 @@ textarea:focus::placeholder {
   margin: 0 auto;
 }
 
-ul > .text-valid {
-  color: transparent;
-  font-size: 11px;
-  padding: 8px 0 8px 8px;
-}
-
 .text-input {
   border-radius: 50px;
   margin-left: 16px;
@@ -135,12 +122,23 @@ ul > .text-valid {
   width: 300px;
 }
 
-.text-valid {
+ul .text-valid {
+  color: transparent;
+  font-size: 11px;
   margin-left: 135px;
+  padding: 8px 0 8px 8px;
 }
 
 #notes {
   border-radius: 10px;
   box-sizing: border-box;
   resize: vertical;
+}
+
+#serial-number {
+  text-transform: uppercase;
+}
+
+#submit-valid {
+  color: transparent;
 }
