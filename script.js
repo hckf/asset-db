@@ -114,13 +114,6 @@ function setupFields(className) {
     field.addEventListener("blur", (e) => {
       fieldValidation(field);
     });
-    if (field.id == "serial-number") {
-      field.addEventListener("change", (e) => {
-        let p = this.selectionStart;
-        this.value = this.value.toUpperCase();
-        this.setSelectionRange(p, p);
-      });
-    }
   }
 }
 
@@ -216,7 +209,7 @@ function submitForm() {
         fieldsValid = false;
       }
     }
-    let submitValid = document.getElementById("submit-valid");
+    let submitButton = document.getElementById("submit-button");
     if (fieldsValid) {
       let http = new XMLHttpRequest();
       let url = "database.php";
@@ -258,8 +251,8 @@ function submitForm() {
 
       http.send(parameters);
       http.onload = function () {
-        submitValid.innerText = "Done!";
-        submitValid.style.color = "lightgreen";
+        submitButton.innerText = "Done!";
+        submitButton.style.backgroundColor = "lightgreen";
         // Reset field values
         for (let field of fields) {
           field.value = null;
@@ -268,11 +261,18 @@ function submitForm() {
             field.disabled = true;
           }
         }
+        setTimeout(function () {
+          submitButton.style.backgroundColor = "#24a0ed";
+          submitButton.innerText = "Submit";
+        }, 1000); // for 1s = 1000ms
       };
     } else {
-      submitValid.innerText =
-        "Please ensure all fields are properly submitted.";
-      submitValid.style.color = "red";
+      submitButton.style.backgroundColor = "red";
+      submitButton.innerText = "Invalid";
+      setTimeout(function () {
+        submitButton.style.backgroundColor = "#24a0ed";
+        submitButton.innerText = "Submit";
+      }, 1000);
     }
     // Used to prevent form refresh?
     return false;
