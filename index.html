@@ -9,29 +9,33 @@
     <title>Asset Database</title>
   </head>
   <body>
-    <form
-      name="assetform"
-      action=""
-      method="post"
-      id="asset-form"
-      class="page-form"
-    >
-      <div class="form-contents" id="form-contents">
-        <div class="form-header" id="form-header">
-          <h1 class="header-text" id="form-heading">Asset Form</h1>
-          <p class="header-text" id="form-subheading">
-            Please use <span class="highlight">alphanumeric</span> characters,
-            <span class="highlight">whitespace</span> and
-            <span class="highlight">. ' - _ /</span>
-            only.
-          </p>
-          <p class="header-text text-valid" id="submit-valid">
-            Validation text goes here.
-          </p>
-        </div>
-        <ul id="form-fields" class="form-body">
-          <li>
-            <label for="device-name">Device Name</label>
+    <div class="container" id="form-container">
+      <form
+        name="assetform"
+        action=""
+        method="post"
+        id="asset-form"
+        class="page-form"
+      >
+        <div class="form-contents" id="form-contents">
+          <div class="field-container">
+            <div class="form-header" id="form-header">
+              <h1 class="header-text" id="form-heading">Asset Form</h1>
+              <p class="header-text" id="form-subheading">
+                Please use
+                <span class="highlight">alphanumeric</span> characters,
+                <span class="highlight">whitespace</span> and
+                <span class="highlight">. ' - _ /</span>
+                only.
+              </p>
+              <p class="header-text text-valid" id="submit-valid">
+                Validation text goes here.
+              </p>
+            </div>
+          </div>
+
+          <div class="field-container" id="device-container">
+            <label for="device-name" class="text-label">Device Name</label>
             <input
               type="text"
               id="device-name"
@@ -42,12 +46,15 @@
               placeholder="Enter the name of the device"
               required
             />
-          </li>
-          <div id="name-valid" class="text-valid">
-            Device name errors will appear here.
+            <div id="name-valid" class="text-valid">
+              Device name errors will appear here.
+            </div>
           </div>
-          <li>
-            <label for="device-version">Device Version</label>
+
+          <div class="field-container" id="version-container">
+            <label for="device-version" class="text-label"
+              >Device Version</label
+            >
             <input
               type="text"
               id="device-version"
@@ -58,12 +65,13 @@
               placeholder="Enter the device version"
               required
             />
-          </li>
-          <div id="version-valid" class="text-valid">
-            Device version errors will appear here.
+            <div id="version-valid" class="text-valid">
+              Device version errors will appear here.
+            </div>
           </div>
-          <li>
-            <label for="serial-number">Serial Number</label>
+
+          <div class="field-container" id="serial-container">
+            <label for="serial-number" class="text-label">Serial Number</label>
             <input
               type="text"
               id="serial-number"
@@ -74,31 +82,36 @@
               placeholder="Enter the device serial number"
               required
             />
-          </li>
-          <div id="serial-valid" class="text-valid">
-            Serial number errors will appear here.
+            <div id="serial-valid" class="text-valid">
+              Serial number errors will appear here.
+            </div>
           </div>
-          <li>
-            <label for="device-status">Device Status</label>
+
+          <div class="field-container" id="status-container">
+            <label for="device-status" class="text-label">Device Status</label>
             <select
               id="device-status"
               class="text-input"
               name="device-status"
+              placeholder="Enter the status of the device"
               required
             >
-              <option selected hidden></option>
+              <option disabled hidden selected value="">
+                Select the status of the device
+              </option>
               <option value="option-storage">In Storage</option>
               <option value="option-issued">Issued</option>
               <option value="option-return">Due Return</option>
               <option value="option-damaged">Damaged</option>
               <option value="option-lost">Lost</option>
             </select>
-          </li>
-          <div id="status-valid" class="text-valid">
-            Device status errors will appear here.
+            <div id="status-valid" class="text-valid">
+              Device status errors will appear here.
+            </div>
           </div>
-          <li>
-            <label for="location">Location</label>
+
+          <div class="field-container" id="location-container">
+            <label for="location" class="text-label">Location</label>
             <input
               disabled="true"
               type="text"
@@ -110,12 +123,13 @@
               placeholder="Where is the device?"
               required
             />
-          </li>
-          <div id="location-valid" class="text-valid">
-            Device location errors will appear here.
+            <div id="location-valid" class="text-valid">
+              Device location errors will appear here.
+            </div>
           </div>
-          <li>
-            <label for="user-issued">User Issued</label>
+
+          <div class="field-container" id="issued-container">
+            <label for="user-issued" class="text-label">User Issued</label>
             <input
               disabled="true"
               type="text"
@@ -127,29 +141,30 @@
               placeholder="Who has the device?"
               required
             />
-          </li>
-          <div id="issued-valid" class="text-valid">
-            User issuing errors will appear here.
+            <div id="issued-valid" class="text-valid">
+              User issuing errors will appear here.
+            </div>
           </div>
-          <li>
-            <label for="notes">Notes</label>
+
+          <div class="field-container" id="notes-container">
+            <label for="notes" class="text-label">Notes</label>
             <textarea
               id="notes"
               class="text-input"
               name="notes"
               placeholder="Additional information here (optional)"
             ></textarea>
-          </li>
-          <div id="notes-valid" class="text-valid">
-            Notes errors will appear here.
+            <div id="notes-valid" class="text-valid">
+              Notes errors will appear here.
+            </div>
           </div>
-          <li class="button">
+          <div class="field-container" id="serial-container">
             <button type="submit" id="submit-button" class="form-buttons">
               Submit
             </button>
-          </li>
-        </ul>
-      </div>
-    </form>
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

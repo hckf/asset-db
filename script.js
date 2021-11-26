@@ -260,6 +260,7 @@ function submitForm() {
       http.onload = function () {
         submitValid.innerText = "Done!";
         submitValid.style.color = "lightgreen";
+        // Reset field values
         for (let field of fields) {
           field.value = null;
           field.style.border = "1px solid #999";
